@@ -3,6 +3,7 @@ package com.bignerdranch.android.servicebestpractice;
 import android.animation.FloatArrayEvaluator;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Switch;
 
 import java.io.File;
@@ -23,6 +24,8 @@ import okhttp3.Response;
 //第2个参数，表示下载进度
 //第3个参数，表示已整型来反馈执行结果
 public class DownloadTask extends AsyncTask<String, Integer, Integer> {
+
+    private static final String TAG = "DownloadTask";
 
     public static final int TYPE_SUCCESS = 0;
     public static final int TYPE_FAILED = 1;
@@ -59,6 +62,8 @@ public class DownloadTask extends AsyncTask<String, Integer, Integer> {
             long downloadLength = 0;
             //下载的url
             String downloadUrl = params[0];
+
+            Log.i(TAG, downloadUrl);
             //文件名
             String fileName = downloadUrl.substring(downloadUrl.lastIndexOf("/"));
             //文件存放路径
